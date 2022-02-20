@@ -1,4 +1,4 @@
-# Project for John Bryce 
+# Project For John Bryce 
 
 This project is about vacations
 
