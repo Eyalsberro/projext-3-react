@@ -21,6 +21,7 @@ export default function Header() {
         } else {
             localStorage.removeItem('username')
             localStorage.removeItem('role')
+            localStorage.removeItem('id')
             navigate('/login')
         }
         console.log(data);
@@ -36,7 +37,7 @@ export default function Header() {
             <Box sx={{ flexGrow: 1 }}>
                 <AppBar position="static" sx={{ bgcolor: '#ff8a80' }}>
                     <Toolbar>
-                        <Typography onClick={() => goTo("")} variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                        <Typography id="headr" onClick={() => goTo("")} variant="h6" component="div" sx={{ flexGrow: 1 }}>
                             Vacations
                         </Typography>
 

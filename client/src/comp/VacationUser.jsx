@@ -8,14 +8,16 @@ import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
 import Avatar from '@mui/material/Avatar';
+import { renderMatches } from 'react-router-dom';
 
-
+// the compentent show the vacation that the user follow//////////
 
 export default function VacationsCard({ vacafollow }) {
 
     const [checked, setChecked] = useState(true);
     const [update, setUpdate] = useState(true);
 
+    //  ====   The unfollow requets   ===   //
 
     const unfollow = async () => {
         const res = await fetch('http://localhost:1000/vacations/delfollow', {
@@ -25,12 +27,15 @@ export default function VacationsCard({ vacafollow }) {
             credentials: "include"
         })
         toggleChecked()
-        setUpdate(!update)
+        setUpdate(up=>!up)
+        window.location.reload(false)
     }
 
     const toggleChecked = () => {
         setChecked(prev => !prev);
     };
+
+   
 
     return (
         <>
@@ -59,7 +64,7 @@ export default function VacationsCard({ vacafollow }) {
                         <Typography variant="h5">
                             ${vacafollow.price}
                         </Typography>
-                        <Checkbox checked={checked} onChange={unfollow} icon={<FavoriteBorder/>} checkedIcon={<Favorite color="error" />} />
+                        <Checkbox checked={checked} onChange={unfollow} icon={<FavoriteBorder />} checkedIcon={<Favorite color="error" />} />
                         <Avatar>{vacafollow.NumberVacations}</Avatar>
                     </div>
                 </CardContent>

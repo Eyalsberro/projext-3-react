@@ -10,10 +10,10 @@ import Favorite from '@mui/icons-material/Favorite';
 import Avatar from '@mui/material/Avatar';
 
 
-export default function VacationsCard({ vacaunfollow }) {
+export default function VacationsCard({ vacaunfollow, setVacationsFollow }) {
 
     const [checked, setChecked] = useState(false);
-    const [update, setUpdate] = useState(true);
+    const [update, setUpdate] = useState([]);
 
 
 
@@ -29,7 +29,7 @@ export default function VacationsCard({ vacaunfollow }) {
         if (data.err) {
             alert(data.err)
         } else {
-            setUpdate(up => !up)
+            window.location.reload(false)
         }
         console.log(data);
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions'; 
+import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -31,7 +31,8 @@ export default function Login() {
         const data = await res.json()
 
         if (data.err) {
-            alert(data.err)
+            document.getElementById("err").innerHTML = data.err
+
         } else {
             localStorage.username = data.username
             localStorage.role = data.role
@@ -50,19 +51,21 @@ export default function Login() {
         <div>
             <div className='login'>
 
-                <Card sx={{ height: 320, width: 365}}>
-                    <CardContent sx={{ margin:1}}>
+                <Card sx={{ height: 320, width: 365, boxShadow: 3 }}>
+                    <span id="err"></span>
+                    <CardContent sx={{ margin: 1 }}>
 
                         <TextField id="outlined-basic" label="Username" variant="outlined" value={username} onChange={(e) => setUsername(e.target.value)} />
                         <br />
-                        <TextField id="outlined-basic" label="Password" variant="outlined" value={password} onChange={(e) => setPassword(e.target.value)} />
+                        <TextField id="outlined-password-input" type="password" label="Password" variant="outlined" value={password} onChange={(e) => setPassword(e.target.value)} />
 
                         <FormGroup row={true}>
                             <FormControlLabel control={<Switch />} onChange={() => setRole("admin")} label="Admin" />
-                            <FormControlLabel control={<Switch />} onChange={() => setRole("user")} label="User" />
+                            <FormControlLabel control={<Switch />} onChange={() => setRole("user")} label="Customer" />
                         </FormGroup>
 
                     </CardContent>
+
                     <CardActions>
                         <Button onClick={handleClcik} size="small">Login</Button>
                     </CardActions>

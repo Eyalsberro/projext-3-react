@@ -62,8 +62,8 @@ export default function Admin({ setVacations, vacations }) {
 
                 <Box sx={{ '& > :not(style)': { m: 1 } }}>
 
-                    <Fab color="secondary" aria-label="add" onClick={handleClick}>
-                        <AddIcon />
+                    <Fab color='primary' aria-label="add" onClick={handleClick} sx={{ bgcolor: '#ff8a80' }}>
+                        <AddIcon/>
                     </Fab>
                     <div className='popOver'>
 

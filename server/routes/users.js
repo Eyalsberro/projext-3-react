@@ -15,7 +15,7 @@ router.post('/login', async (req, res) => {
 
         }
         if (!role) {
-            return res.status(400).send({ err: "**Are you an Owner or Renter?" })
+            return res.status(400).send({ err: "**Are you an Admin or Customer?" })
         }
 
         const user = await SQL(`SELECT username,password,id
@@ -23,20 +23,20 @@ router.post('/login', async (req, res) => {
         WHERE username="${username}" AND password="${password}" AND role="${role}"`)
         console.log(user[0].id);
 
-        if (user.length < 1) {
-            return res.status(400).send({ err: "**wrong username or/and password" })
+        if (user.length <1 ) {
+            return res.status(400).send({ err: "**Wrong username or/and password" })
 
-        }
+        } 
         res.send({ msg: "Succefull login " + username, username, role, user })
 
         req.session.username = username
-        req.session.role = role 
         req.session.id = user[0].id 
+        req.session.role = role 
         console.log( req.session.role);
 
     } catch (err) {
         console.log(err);
-        return res.sendStatus(500)
+        return res.status(400).send({ err: "**wrong username or/and password" })
     }
 
 

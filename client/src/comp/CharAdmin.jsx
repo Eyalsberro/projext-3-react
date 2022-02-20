@@ -71,6 +71,7 @@ export default function CharAdmin() {
 
     return (
         <div>
+            <h2 className='h1header'>Here you can see all the vacations your customers are following </h2>
             {barChart}
         </div>
     )

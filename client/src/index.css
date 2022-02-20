@@ -58,6 +58,7 @@ code {
 
 .h1header{
   text-align: center;
+  text-transform: capitalize;
 }
 
 .addPost{
@@ -69,3 +70,20 @@ code {
 .css-uu76gh-MuiTypography-root > input{
   margin-bottom: 8px;
 }
+
+#headr{
+  cursor: pointer;
+}
+
+canvas{
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-bottom: 100px;
+
+}
+
+#err{
+  margin-top: 5px;
+  color: red;
+}
+
