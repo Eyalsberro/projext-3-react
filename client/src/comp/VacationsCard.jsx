@@ -9,6 +9,7 @@ import Box from '@mui/material/Box';
 import Popover from '@mui/material/Popover';
 import TextField from '@mui/material/TextField';
 
+/////////////=========== Page for Admin edit and delete vacations==============///////////////
 
 export default function VacationsCard({ vaca, vacations, setVacations }) {
 
@@ -22,7 +23,7 @@ export default function VacationsCard({ vaca, vacations, setVacations }) {
     const [dateFrom, setDateFrom] = useState("");
     const [dateUntil, setDateUntil] = useState("");
 
-    const unfollow = async () => {
+    const delvacations = async () => {
         const res = await fetch(`http://localhost:1000/admin/${vaca.id}`, {
             method: "delete",
             headers: { 'content-type': 'application/json' },
@@ -84,7 +85,6 @@ export default function VacationsCard({ vaca, vacations, setVacations }) {
                     </Typography>
                     <Typography gutterBottom variant="h6" component="div">
                         {new Date(vaca.dateFrom).toLocaleDateString('he-IL')} - {new Date(vaca.dateUntil).toLocaleDateString('he-IL')}
-                        {/* {vaca.dateFrom} - {vaca.dateUntil} */}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                         {vaca.descriptions}
@@ -94,7 +94,7 @@ export default function VacationsCard({ vaca, vacations, setVacations }) {
                             ${vaca.price}
                         </Typography>
                         <EditIcon onClick={handleClick} />
-                        <DeleteForeverIcon onClick={unfollow} />
+                        <DeleteForeverIcon onClick={delvacations} />
                     </div>
                 </CardContent>
 

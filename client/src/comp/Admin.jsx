@@ -4,7 +4,6 @@ import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
-import VacationsCard from './VacationsCard';
 
 export default function Admin({ setVacations, vacations }) {
 
@@ -57,7 +56,6 @@ export default function Admin({ setVacations, vacations }) {
     return (
 
         <div>
-            {/* <VacationsCard vacations={vacations} setVacations={setVacations} /> */}
             <div className='addPost'>
 
                 <Box sx={{ '& > :not(style)': { m: 1 } }}>

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-// import { useParams } from 'react-router-dom';
 import Login from './Login';
 import VacationsCard from './VacationsCard';
 import VacationUser from './VacationUser';
@@ -39,7 +38,7 @@ export default function Vacations() {
         })()
 
 
-    }, [update])
+    }, [])
 
 
 
@@ -59,7 +58,6 @@ export default function Vacations() {
                     alert(data1.err)
                 } else {
                     setVacationsFollow(newDatad)
-                    setUpdate(up => !up)
                 }
                 console.log(data1);
 
@@ -76,7 +74,6 @@ export default function Vacations() {
                     alert(data.err)
                 } else {
                     setVacationsUnFollow(data)
-                    setUpdate(up => !up)
                 }
                 console.log(data);
 
@@ -93,7 +90,6 @@ export default function Vacations() {
                     alert(data1.err)
                 } else {
                     setVacationsID(data1)
-                    setUpdate(up => !up)
                 }
                 console.log(data1);
 
@@ -102,7 +98,7 @@ export default function Vacations() {
             
         }, 500);
         
-    }, [])
+    }, [update])
 
 
 
@@ -128,14 +124,14 @@ export default function Vacations() {
                                     <div className='uppercard' >
 
                                         {
-                                            vacationsFollow.map(vacafollow => <VacationUser key={vacafollow.id} vacafollow={vacafollow} />)
+                                            vacationsFollow.map(vacafollow => <VacationUser key={vacafollow.id} vacafollow={vacafollow} setUpdate={setUpdate} />)
                                         }
 
                                         {
-                                            vacationsUnFollow.map(vacaunfollow => <VacationUnfollow key={vacaunfollow.id} vacaunfollow={vacaunfollow} setVacationsFollow={setVacationsFollow} />)
+                                            vacationsUnFollow.map(vacaunfollow => <VacationUnfollow key={vacaunfollow.id} vacaunfollow={vacaunfollow} setVacationsFollow={setVacationsFollow} setUpdate={setUpdate} />)
                                         }
                                         {
-                                            vacationsID.map(nonfollow => <Nonfollow key={nonfollow.id} nonfollow={nonfollow} />)
+                                            vacationsID.map(nonfollow => <Nonfollow key={nonfollow.id} nonfollow={nonfollow} setUpdate={setUpdate} />)
                                         }
                                     </div>
 

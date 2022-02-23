@@ -9,11 +9,11 @@ import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
 import Avatar from '@mui/material/Avatar';
 
+//============ Page showing the vacation no one following====//////
 
-export default function Nonfollow({ nonfollow }) {
+export default function Nonfollow({ nonfollow ,setUpdate}) {
 
     const [checked, setChecked] = useState(false);
-    const [update, setUpdate] = useState(true);
 
 
 

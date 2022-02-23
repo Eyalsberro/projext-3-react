@@ -23,16 +23,16 @@ router.post('/login', async (req, res) => {
         WHERE username="${username}" AND password="${password}" AND role="${role}"`)
         console.log(user[0].id);
 
-        if (user.length <1 ) {
+        if (user.length < 1) {
             return res.status(400).send({ err: "**Wrong username or/and password" })
 
-        } 
+        }
         res.send({ msg: "Succefull login " + username, username, role, user })
 
         req.session.username = username
-        req.session.id = user[0].id 
-        req.session.role = role 
-        console.log( req.session.role);
+        req.session.id = user[0].id
+        req.session.role = role
+        console.log(req.session.role);
 
     } catch (err) {
         console.log(err);
@@ -55,7 +55,7 @@ router.post('/register', async (req, res) => {
         FROM users
         WHERE username = '${username}'`)
 
-        if (usertaken.length !=0) {
+        if (usertaken.length != 0) {
             return res.status(400).send({ err: "****username already taken" })
         }
 
@@ -79,6 +79,7 @@ router.delete('/logout', (req, res) => {
     res.send({ msg: "bye bye! see you soon" })
 
 })
+
 
 
 

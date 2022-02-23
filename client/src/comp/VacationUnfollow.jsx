@@ -9,11 +9,11 @@ import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
 import Avatar from '@mui/material/Avatar';
 
+// the compentent show the vacation that the user is not following follow//////////
 
-export default function VacationsCard({ vacaunfollow, setVacationsFollow }) {
+export default function VacationsCard({ vacaunfollow, setUpdate }) {
 
     const [checked, setChecked] = useState(false);
-    const [update, setUpdate] = useState([]);
 
 
 
@@ -29,7 +29,7 @@ export default function VacationsCard({ vacaunfollow, setVacationsFollow }) {
         if (data.err) {
             alert(data.err)
         } else {
-            window.location.reload(false)
+            setUpdate(up=>!up)
         }
         console.log(data);
 

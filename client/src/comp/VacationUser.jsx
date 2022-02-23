@@ -12,10 +12,9 @@ import { renderMatches } from 'react-router-dom';
 
 // the compentent show the vacation that the user follow//////////
 
-export default function VacationsCard({ vacafollow }) {
+export default function VacationsCard({ vacafollow ,setUpdate }) {
 
     const [checked, setChecked] = useState(true);
-    const [update, setUpdate] = useState(true);
 
     //  ====   The unfollow requets   ===   //
 
@@ -28,7 +27,6 @@ export default function VacationsCard({ vacafollow }) {
         })
         toggleChecked()
         setUpdate(up=>!up)
-        window.location.reload(false)
     }
 
     const toggleChecked = () => {

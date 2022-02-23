@@ -18,7 +18,6 @@ export default function Login() {
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    const [update, setUpdate] = useState(false);
     const [role, setRole] = useState(false)
 
     const handleClcik = async () => {
@@ -38,7 +37,7 @@ export default function Login() {
             localStorage.role = data.role
             localStorage.id = data.user[0].id
             navigate('/')
-            // setUpdate(up=> !up)
+            window.location.reload(true);
         }
         console.log(data);
 

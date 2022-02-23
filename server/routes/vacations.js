@@ -17,23 +17,6 @@ router.get('/', async (req, res) => {
 })
 
 
-// Get all vacations followed by user_id 
-// router.get('/follow/:id', async (req, res) => {
-//     try {
-//         const { id } = req.params
-
-//         const followvacations = await SQL(`SELECT vacations.* , users.username
-//         FROM follow
-//         inner join vacations on follow.vacations_id = vacations.id
-//         inner join users on follow.user_id = users.id
-//         WHERE users.id = ${id}`)
-//         res.send(followvacations)
-
-//     } catch (err) {
-//         console.log(err);
-//         return res.sendStatus(500)
-//     }
-// })
 router.get('/follow/:id', async (req, res) => {
     try {
         const { id } = req.params
@@ -73,6 +56,7 @@ router.get('/unfollow/:id', async (req, res) => {
         return res.sendStatus(500)
     }
 })
+
 router.get('/unfollow', async (req, res) => {
     try {
         
