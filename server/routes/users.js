@@ -8,30 +8,27 @@ const router = require('express').Router()
 router.post('/login', async (req, res) => {
 
     try {
-        const { username, password, role } = req.body
+        const { username, password } = req.body
 
         if (!username || !password) {
             return res.status(400).send({ err: "You are missing username or/and passwored" })
 
         }
-        if (!role) {
-            return res.status(400).send({ err: "**Are you an Admin or Customer?" })
-        }
 
-        const user = await SQL(`SELECT username,password,id
+        const user = await SQL(`SELECT username,password,id,role
         FROM users
-        WHERE username="${username}" AND password="${password}" AND role="${role}"`)
+        WHERE username="${username}" AND password="${password}"`)
         console.log(user[0].id);
 
         if (user.length < 1) {
             return res.status(400).send({ err: "**Wrong username or/and password" })
 
         }
-        res.send({ msg: "Succefull login " + username, username, role, user })
+        res.send({ msg: "Succefull login " + username, username, user })
 
         req.session.username = username
         req.session.id = user[0].id
-        req.session.role = role
+        req.session.role = user[0].role
         console.log(req.session.role);
 
     } catch (err) {

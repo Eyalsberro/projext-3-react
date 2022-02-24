@@ -18,13 +18,13 @@ export default function Login() {
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    const [role, setRole] = useState(false)
+    // const [role, setRole] = useState(false)
 
     const handleClcik = async () => {
         const res = await fetch('http://localhost:1000/users/login', {
             method: "post",
             headers: { 'content-type': 'application/json' },
-            body: JSON.stringify({ username, password, role }),
+            body: JSON.stringify({ username, password }),
             credentials: "include"
         })
         const data = await res.json()
@@ -34,7 +34,7 @@ export default function Login() {
 
         } else {
             localStorage.username = data.username
-            localStorage.role = data.role
+            localStorage.role = data.user[0].role
             localStorage.id = data.user[0].id
             navigate('/')
             window.location.reload(true);
@@ -58,10 +58,10 @@ export default function Login() {
                         <br />
                         <TextField id="outlined-password-input" type="password" label="Password" variant="outlined" value={password} onChange={(e) => setPassword(e.target.value)} />
 
-                        <FormGroup row={true}>
+                        {/* <FormGroup row={true}>
                             <FormControlLabel control={<Switch />} onChange={() => setRole("admin")} label="Admin" />
                             <FormControlLabel control={<Switch />} onChange={() => setRole("user")} label="Customer" />
-                        </FormGroup>
+                        </FormGroup> */}
 
                     </CardContent>
 
