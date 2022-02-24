@@ -10,7 +10,7 @@ export default function CharAdmin() {
 
     useEffect(() => {
         (async () => {
-            const res = await fetch('http://localhost:1000/vacations/follow', {
+            const res = await fetch('http://localhost:1000/admin/follow', {
                 method: 'GET',
                 headers: { 'content-type': 'application/json' },
                 credentials: "include"

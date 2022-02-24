@@ -8,13 +8,14 @@ import EditIcon from '@mui/icons-material/Edit';
 import Box from '@mui/material/Box';
 import Popover from '@mui/material/Popover';
 import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+
 
 /////////////=========== Page for Admin edit and delete vacations==============///////////////
 
-export default function VacationsCard({ vaca, vacations, setVacations }) {
+export default function AdminCard({ vaca, setUpdate1 }) {
 
 
-    const [update, setUpdate] = useState(false);
     const [descriptions, setDescriptions] = useState("");
     const [country, setCountry] = useState("");
     const [cityName, setCityName] = useState("");
@@ -22,14 +23,15 @@ export default function VacationsCard({ vaca, vacations, setVacations }) {
     const [img, setImg] = useState("");
     const [dateFrom, setDateFrom] = useState("");
     const [dateUntil, setDateUntil] = useState("");
+    const [msg, setmsg] = useState("");
 
     const delvacations = async () => {
         const res = await fetch(`http://localhost:1000/admin/${vaca.id}`, {
-            method: "delete",
-            headers: { 'content-type': 'application/json' },
+            method: "DELETE",
+            headers: { 'content-type': 'application/json; charset=UTF-8' },
             credentials: "include"
-        })
-        setUpdate(true)
+        });
+        setUpdate1(true)
     }
 
 
@@ -41,10 +43,10 @@ export default function VacationsCard({ vaca, vacations, setVacations }) {
             credentials: "include"
         })
         const data1 = await res1.json()
-        setUpdate(true)
-
         if (data1.err) {
-            alert(data1.err)
+            setmsg(data1.err)
+        } else {
+            setUpdate1((up) => !up)
         }
 
         console.log(data1);
@@ -93,41 +95,39 @@ export default function VacationsCard({ vaca, vacations, setVacations }) {
                         <Typography variant="h5">
                             ${vaca.price}
                         </Typography>
-                        <EditIcon onClick={handleClick} />
-                        <DeleteForeverIcon onClick={delvacations} />
+                        <EditIcon id="editpan" onClick={handleClick} />
+                        <DeleteForeverIcon id="deletepen" onClick={delvacations} />
                     </div>
                 </CardContent>
 
             </Card>
 
 
-            <Box sx={{ '& > :not(style)': { m: 1 } }}>
+            <Box sx={{ '& > :not(style)': { m: 1 }, }}>
 
-                <div className='popOver'>
 
-                    <Popover
-                        id={id}
-                        open={open}
-                        anchorEl={anchorEl}
-                        onClose={handleClose}
-                        anchorOrigin={{
-                            vertical: 'bottom',
-                            horizontal: 'left',
-                        }}
-                    >
-                        <Typography sx={{ p: 2, display: "flex", flexDirection: 'column' }}>
-                            <input type="url" placeholder='Img URL' onChange={e => setImg(e.target.value)} />
-                            <input type="text" placeholder='Country Name' onChange={e => setCountry(e.target.value)} />
-                            <input type="text" placeholder='City Name' onChange={e => setCityName(e.target.value)} /> 
-                            <input type="date" onChange={e => setDateFrom(e.target.value)} /> 
-                            <input type="date" onChange={e => setDateUntil(e.target.value)} />
-                            <input type="text" placeholder='Descriptions' onChange={e => setDescriptions(e.target.value)} />
-                            <input type="text" placeholder='Price' onChange={e => setPrice(e.target.value)} />
-                            <button onClick={editvacation}>Edit Vacation</button>
-                        </Typography>
-                    </Popover>
 
-                </div>
+                <Popover
+                    id={id}
+                    open={open}
+                    anchorEl={anchorEl}
+                    onClose={handleClose}
+                    anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'left',
+                    }}
+                >
+                <span className='msg'>{msg}</span>
+                    <TextField sx={{ m: 0.5 }} id="outlined-basic" placeholder={vaca.img.toString()} label="Img" variant="outlined" size="small" onChange={e => setImg(e.target.value)} />
+                    <TextField sx={{ m: 0.5 }} id="outlined-basic" placeholder={vaca.country.toString()} label="Country" variant="outlined" size="small" onChange={e => setCountry(e.target.value)} />
+                    <TextField sx={{ m: 0.5 }} id="outlined-basic" placeholder={vaca.cityName.toString()} label="City" variant="outlined" size="small" onChange={e => setCityName(e.target.value)} />
+                    <TextField sx={{ m: 0.5 }} type="date" id="outlined-basic"  variant="standard" onChange={e => setDateFrom(e.target.value)} />
+                    <TextField sx={{ m: 0.5 }} type="date" id="outlined-basic"  variant="standard" onChange={e => setDateUntil(e.target.value)} />
+                    <TextField sx={{ m: 0.5 }} id="outlined-basic" placeholder={vaca.descriptions.toString()} label="Descriptions" variant="outlined" size="small" onChange={e => setDescriptions(e.target.value)} />
+                    <TextField sx={{ m: 0.5 }} id="outlined-basic" placeholder={vaca.price.toString()} label="Price" variant="outlined" size="small" onChange={e => setPrice(e.target.value)} />
+                    <Button id="btnvava" variant="contained" onClick={editvacation}>Edit Vacation</Button>
+                </Popover>
+
             </Box>
         </>
     )

@@ -4,6 +4,8 @@ import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 export default function Admin({ setVacations, vacations }) {
 
@@ -61,9 +63,9 @@ export default function Admin({ setVacations, vacations }) {
                 <Box sx={{ '& > :not(style)': { m: 1 } }}>
 
                     <Fab color='primary' aria-label="add" onClick={handleClick} sx={{ bgcolor: '#ff8a80' }}>
-                        <AddIcon/>
+                        <AddIcon />
                     </Fab>
-                    <div className='popOver'>
+                    
 
                         <Popover
                             id={id}
@@ -75,19 +77,20 @@ export default function Admin({ setVacations, vacations }) {
                                 horizontal: 'left',
                             }}
                         >
-                            <Typography sx={{ p:2,display: "flex", flexDirection: 'column' }}>
-                                <input type="url" placeholder='Img URL' onChange={e => setImg(e.target.value)} />
-                                <input type="text" placeholder='Country Name' onChange={e => setCountry(e.target.value)} />
-                                <input type="text" placeholder='City Name' onChange={e => setCityName(e.target.value)} />
-                                <input type="date" onChange={e => setDateFrom(e.target.value)} />
-                                <input type="date" onChange={e => setDateUntil(e.target.value)} />
-                                <input type="text" placeholder='Descriptions' onChange={e => setDescriptions(e.target.value)} />
-                                <input type="text" placeholder='Price' onChange={e => setPrice(e.target.value)} />
-                                <button onClick={addVacation}>App Post</button>
-                            </Typography>
+
+                            <TextField sx={{ m: 0.5 }} id="outlined-basic" placeholder={img} label="Img" variant="outlined" size="small" onChange={e => setImg(e.target.value)} />
+                            <TextField sx={{ m: 0.5 }} id="outlined-basic" placeholder={country} label="Country" variant="outlined" size="small" onChange={e => setCountry(e.target.value)} />
+                            <TextField sx={{ m: 0.5 }} id="outlined-basic" placeholder={cityName} label="City" variant="outlined" size="small" onChange={e => setCityName(e.target.value)} />
+                            <TextField sx={{ m: 0.5 }} type="date" id="outlined-basic" variant="standard" onChange={e => setDateFrom(e.target.value)} />
+                            <TextField sx={{ m: 0.5 }} type="date" id="outlined-basic" variant="standard" onChange={e => setDateUntil(e.target.value)} />
+                            <TextField sx={{ m: 0.5 }} id="outlined-basic" placeholder={descriptions} label="Descriptions" variant="outlined" size="small" onChange={e => setDescriptions(e.target.value)} />
+                            <TextField sx={{ m: 0.5 }} id="outlined-basic" placeholder={price} label="Price" variant="outlined" size="small" onChange={e => setPrice(e.target.value)} />
+                            <Button id="btnvava" variant="contained" onClick={addVacation}>Add Vacations</Button>
+
+                            
                         </Popover>
 
-                    </div>
+                    
                 </Box>
             </div>
         </div>

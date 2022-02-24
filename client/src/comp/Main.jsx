@@ -2,7 +2,6 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom'
 import CharAdmin from './CharAdmin';
 import Login from './Login';
-import Profile from './Profile';
 import Register from './Register';
 import Vacations from './Vacations';
 

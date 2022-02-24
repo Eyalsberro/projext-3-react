@@ -87,3 +87,27 @@ canvas{
   color: red;
 }
 
+.css-3bmhjh-MuiPaper-root-MuiPopover-paper{
+  width: 200px;
+  height: 450px;
+}
+
+.css-1gsrpyx-MuiFormControl-root-MuiTextField-root {
+  margin: 5px 10px;
+}
+
+.msg{
+  color: red;
+}
+
+#editpan{
+  cursor: pointer;
+}
+
+#deletepen{
+  cursor: pointer;
+}
+
+#btnvava{
+  margin-left: 30px;
+}

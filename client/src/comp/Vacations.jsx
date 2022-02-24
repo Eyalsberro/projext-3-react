@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Login from './Login';
-import VacationsCard from './VacationsCard';
+import AdminCard from './AdminCard';
 import VacationUser from './VacationUser';
 import VacationUnfollow from './VacationUnfollow';
 import Admin from './Admin';
@@ -12,6 +12,7 @@ export default function Vacations() {
 
 
     const [update, setUpdate] = useState(false);
+    const [update1, setUpdate1] = useState(false);
     const [currUser, setCurrUser] = useState(localStorage.username);
     const [currUserId, setCurrUserId] = useState(localStorage.id);
     const [vacations, setVacations] = useState([]);
@@ -19,6 +20,8 @@ export default function Vacations() {
     const [vacationsFollow, setVacationsFollow] = useState([]);
     const [vacationsUnFollow, setVacationsUnFollow] = useState([]);
 
+
+    //Get all vacations
     useEffect(() => {
         (async () => {
             const res = await fetch('http://localhost:1000/vacations', {
@@ -38,7 +41,7 @@ export default function Vacations() {
         })()
 
 
-    }, [])
+    }, [update1])
 
 
 
@@ -142,7 +145,7 @@ export default function Vacations() {
                                     <h3 className='h1header'>mr.Admin, here you can edit, delete and post new vacations to your customers</h3>
                                     <div className='uppercard' >
                                         {
-                                            vacations.map(vaca => <VacationsCard key={vaca.id} vaca={vaca} />)
+                                            vacations.map(vaca => <AdminCard key={vaca.id} vaca={vaca} setUpdate1={setUpdate1} />)
                                         }
 
                                     </div>
