@@ -11,7 +11,7 @@ You can find it also here: https://vacations-project.netlify.app
 In the project directory, you can find:
 
 - Client side built with React and using Chartjs
-- Server side bulit with Nodejs
+- Server side built with Nodejs
 - Database with MySQL
 
 
